@@ -1,0 +1,11 @@
+a    b     c     d
+9   10    10    10
+
+required op - icecream
+
+if( your answe goes here.....){
+    cout<<"ice";
+}
+else {
+    cout<<"cream";
+}
