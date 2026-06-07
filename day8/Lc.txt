@@ -1,0 +1,15 @@
+Node* func(Node* head,int k){
+    if(!head || !head->next || k==0) return head;
+Node* fast = head;
+int n =0;
+while(fast){
+    fast = fast->next;
+    n++;}
+k = k%n;
+fast = head;
+    for(int i =0;i <n-k;i++){
+fast = fast->next;}
+    head = fast->next;
+    fast->next = nullptr; 
+    return head;
+}

@@ -15,7 +15,40 @@ Node* newNode = new Node(val);
 newNode->next = head;
 head= newNode;            
 }
+void deleteAtFirst(Node* &head)
+{
+    if(head==nullptr) return; 
+    Node* temp=head;
+    head=temp->next;
+    delete temp;
+}
 
+void deletemiddle(Node* head,int pos)
+{
+    Node*temp=head;
+    int count=1;
+    while(pos-1!=count)
+    {
+        count++;
+        temp=temp->next;
+    }
+    Node* temp2=temp->next->next;
+    temp->next=temp2;
+}
+void deleteend(Node* &head)
+{
+   if(head==nullptr) return;
+   Node* cur=head;
+   Node* prev=nullptr;
+   while(cur->next!=nullptr)
+   {
+    prev=cur;
+    cur=cur->next;
+   }
+   delete cur;
+   return;
+
+}
 void addatmiddle(Node* head,int val ,int pos){
 if(!head)addatbeg(head,val);
 pos -=2; int cnt =0;
