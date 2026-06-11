@@ -1,0 +1,164 @@
+graphs 
+
+
+types of graphs :
+
+1. directed 
+2. undirected
+3. weighted
+4. cyclic / acyclic
+
+representation :
+
+adj matrix 
+adj list
+
+traversal 
+
+bfs 
+dfs
+
+adj matrix
+
+  0  1  2  3
+0 0  0  0  0    
+1       1  0
+2       0
+3
+
+
+
+adj list
+
+
+0 -> 1  3
+1 -> 0  2 4
+2 -> 1  3
+3 -> 0  2
+4 -> 1
+node1 -> node2
+node2 ->node1
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class graph{
+int vertices;
+vector<vector<int>>adj_list;
+public:
+
+  graph(int vertex):vertices(vertex){
+    adj_list(v);
+  }
+  void addEdge(int node1 , int node2,bool directed = flase){
+   adj_list[node1].push_back(node2);
+
+   if(!directed){
+    adj_list[node2].push_back(node1);
+   }
+
+  }
+
+  addVertex(int vertex){
+    vertices++;
+    adj_list[vertex]={};
+  }
+
+  void bfs(int startNode, vector<vector<int>>adj_list, vector<bool>visited){
+  queue<int>q;
+  q.push(startNode);
+  visited[startNode]=true;
+  while(!q.empty()){
+    int cur = q.front();
+    q.pop();
+    cout<<cur<<" ";
+    for(auto adj : adj_list[cur]){
+        if(!visited[adj]){
+            visited[adj]=true;
+            q.push(adj);
+        }
+    }
+  }
+
+  }
+
+
+  void dfs(int currentnode,vector<vector<int>>adj_list, 
+  vector<bool>&visited){ 
+
+   visited[currentnode] = true;
+   cout<<currentnode<<" ";
+   for(auto it : adj_list[currentnode]){
+    dfs(it,adj_list,visited);
+   }
+
+  }
+};
+
+
+bool solve(int n, vector<vector<int>>edges,int src,int dest){
+  vector<bool>visited(n) ={0};
+  vector<vector<int>>adj(n);
+ for(int i = 0;i < n;i++){
+    for(int j =0;j<n;j++){
+        if(edge[i][j] == 1){
+            adj[i].push_back(j);
+            adj[j].push_back(i); 
+        }
+    }
+ }
+queue<int>q;
+q.push(src);
+visited[src]=1;
+while(!q.empty()){
+int size = q.size();
+for(int i=0; i < size;i++){
+    int node = q.front();
+    q.pop();
+    if(node == dest)return 1;
+    for(auto i : adj[node]){
+        if(!vistied[i]){
+         q.push(i);
+        }
+    }}
+}
+return 0;
+}
+
+
+
+shallow copy   
+
+
+class node{
+    int data;
+};
+
+int main(){
+
+    node n1 = new node();
+    node* n2 = n1;
+    node n4 = new node();
+    node* n3 = n4;
+}
+
+
+int islandperimeter(vector<vector<int>>grid){
+int perimeter =0;
+int col = grid[0].size();
+int row = grid.size();
+for(int i =0;i<row;i++){    
+    for(int j =0;j<col;j++){
+if(grid[i][j] == 1){
+    perimeter += 4;
+}
+if(i > 0 && grid[i -1][j] ==1){
+    perimeter -=2;
+}
+if(j >0 && grid[i][j-1] == 1){
+    perimeter -=2;
+}   }
+}
+return perimeter;
+}

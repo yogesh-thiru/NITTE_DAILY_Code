@@ -25,7 +25,6 @@ preorder(root->right);
 }
 
 void inorder(TreeNode* root){
-
     if(root == nullptr)return;
 inorder(root->left);
 cout<<root->data<<endl;
